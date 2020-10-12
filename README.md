@@ -34,3 +34,6 @@ By default, whenever you bring down the Docker network, your MySQL data will be 
 volumes:
   - ./mysql:/var/lib/mysql
 ```
+
+" For Production
+[link](https://www.youtube.com/watch?v=G5Nk4VykcUw)
