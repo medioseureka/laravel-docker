@@ -16,6 +16,7 @@ services:
     depends_on:
       - php
       - mysql
+      - phpmyadmin
     networks:
       - laravel
 
@@ -35,6 +36,8 @@ services:
       SERVICE_NAME: mysql
     networks:
       - laravel
+    volumes:
+      - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
