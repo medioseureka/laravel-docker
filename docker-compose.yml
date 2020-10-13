@@ -36,8 +36,8 @@ services:
       SERVICE_NAME: mysql
     networks:
       - laravel
-    volumes:
-      - ./mysql:/var/lib/mysql
+    # volumes:
+      # - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
