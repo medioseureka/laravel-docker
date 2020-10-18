@@ -49,6 +49,8 @@ services:
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
     ports:
       - 8081:80
     networks:
