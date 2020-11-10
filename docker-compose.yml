@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  laravel:
+  develop:
 
 services:
   site:
@@ -18,7 +18,7 @@ services:
       - mysql
       - phpmyadmin
     networks:
-      - laravel
+      - develop
 
   mysql:
     image: mysql:8.0
@@ -28,16 +28,16 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_USER: homestead
+      MYSQL_DATABASE: develop
+      MYSQL_USER: root
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
-      - laravel
-    # volumes:
-      # - ./mysql:/var/lib/mysql
+      - develop
+    volumes:
+      - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -54,7 +54,7 @@ services:
     ports:
       - 8081:80
     networks:
-      - laravel
+      - develop
 
   php:
     build:
@@ -66,7 +66,7 @@ services:
     ports:
       - "9000:9000"
     networks:
-      - laravel
+      - develop
 
   composer:
     build:
@@ -78,9 +78,9 @@ services:
     working_dir: /var/www/html
     depends_on:
       - php
-    user: laravel
+    user: develop
     networks:
-      - laravel
+      - develop
     entrypoint: ['composer', '--ignore-platform-reqs']
 
   npm:
@@ -101,7 +101,7 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html
-    user: laravel
+    user: develop
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
-      - laravel
+      - develop
